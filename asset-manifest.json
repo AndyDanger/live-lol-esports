@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/live-lol-esports/static/css/main.5b68f141.chunk.css",
-    "main.js": "/live-lol-esports/static/js/main.46338e40.chunk.js",
+    "main.js": "/live-lol-esports/static/js/main.fd7fa511.chunk.js",
     "runtime-main.js": "/live-lol-esports/static/js/runtime-main.6792b443.js",
     "static/css/2.abad2096.chunk.css": "/live-lol-esports/static/css/2.abad2096.chunk.css",
     "static/js/2.ccb34ad4.chunk.js": "/live-lol-esports/static/js/2.ccb34ad4.chunk.js",
@@ -40,6 +40,6 @@
     "static/css/2.abad2096.chunk.css",
     "static/js/2.ccb34ad4.chunk.js",
     "static/css/main.5b68f141.chunk.css",
-    "static/js/main.46338e40.chunk.js"
+    "static/js/main.fd7fa511.chunk.js"
   ]
 }
