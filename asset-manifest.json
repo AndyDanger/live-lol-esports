@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/live-lol-esports/static/css/main.5b68f141.chunk.css",
-    "main.js": "/live-lol-esports/static/js/main.8ad9cc36.chunk.js",
+    "main.css": "/live-lol-esports/static/css/main.cf154593.chunk.css",
+    "main.js": "/live-lol-esports/static/js/main.19afa4aa.chunk.js",
     "runtime-main.js": "/live-lol-esports/static/js/runtime-main.3335a78d.js",
     "static/css/2.abad2096.chunk.css": "/live-lol-esports/static/css/2.abad2096.chunk.css",
-    "static/js/2.ed85cbde.chunk.js": "/live-lol-esports/static/js/2.ed85cbde.chunk.js",
+    "static/js/2.0873bd0a.chunk.js": "/live-lol-esports/static/js/2.0873bd0a.chunk.js",
     "static/js/3.eb4a5183.chunk.js": "/live-lol-esports/static/js/3.eb4a5183.chunk.js",
     "index.html": "/live-lol-esports/index.html",
-    "static/js/2.ed85cbde.chunk.js.LICENSE.txt": "/live-lol-esports/static/js/2.ed85cbde.chunk.js.LICENSE.txt",
+    "static/js/2.0873bd0a.chunk.js.LICENSE.txt": "/live-lol-esports/static/js/2.0873bd0a.chunk.js.LICENSE.txt",
     "static/js/3.eb4a5183.chunk.js.LICENSE.txt": "/live-lol-esports/static/js/3.eb4a5183.chunk.js.LICENSE.txt",
     "static/media/baron.99733951.svg": "/live-lol-esports/static/media/baron.99733951.svg",
     "static/media/bedge.494785af.png": "/live-lol-esports/static/media/bedge.494785af.png",
@@ -38,8 +38,8 @@
   "entrypoints": [
     "static/js/runtime-main.3335a78d.js",
     "static/css/2.abad2096.chunk.css",
-    "static/js/2.ed85cbde.chunk.js",
-    "static/css/main.5b68f141.chunk.css",
-    "static/js/main.8ad9cc36.chunk.js"
+    "static/js/2.0873bd0a.chunk.js",
+    "static/css/main.cf154593.chunk.css",
+    "static/js/main.19afa4aa.chunk.js"
   ]
 }
