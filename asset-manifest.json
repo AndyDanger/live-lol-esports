@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/live-lol-esports/static/css/main.cf154593.chunk.css",
-    "main.js": "/live-lol-esports/static/js/main.14f28690.chunk.js",
-    "runtime-main.js": "/live-lol-esports/static/js/runtime-main.3335a78d.js",
+    "main.js": "/live-lol-esports/static/js/main.c2510f7b.chunk.js",
+    "runtime-main.js": "/live-lol-esports/static/js/runtime-main.6307eac7.js",
     "static/css/2.abad2096.chunk.css": "/live-lol-esports/static/css/2.abad2096.chunk.css",
-    "static/js/2.1293db8e.chunk.js": "/live-lol-esports/static/js/2.1293db8e.chunk.js",
-    "static/js/3.eb4a5183.chunk.js": "/live-lol-esports/static/js/3.eb4a5183.chunk.js",
+    "static/js/2.ef69b1c0.chunk.js": "/live-lol-esports/static/js/2.ef69b1c0.chunk.js",
+    "static/js/3.963e8fa7.chunk.js": "/live-lol-esports/static/js/3.963e8fa7.chunk.js",
     "index.html": "/live-lol-esports/index.html",
-    "static/js/2.1293db8e.chunk.js.LICENSE.txt": "/live-lol-esports/static/js/2.1293db8e.chunk.js.LICENSE.txt",
-    "static/js/3.eb4a5183.chunk.js.LICENSE.txt": "/live-lol-esports/static/js/3.eb4a5183.chunk.js.LICENSE.txt",
+    "static/js/2.ef69b1c0.chunk.js.LICENSE.txt": "/live-lol-esports/static/js/2.ef69b1c0.chunk.js.LICENSE.txt",
+    "static/js/3.963e8fa7.chunk.js.LICENSE.txt": "/live-lol-esports/static/js/3.963e8fa7.chunk.js.LICENSE.txt",
     "static/media/baron.99733951.svg": "/live-lol-esports/static/media/baron.99733951.svg",
     "static/media/blue_baron_slain.ogg": "/live-lol-esports/static/media/blue_baron_slain.37a49b32.ogg",
     "static/media/blue_dragon_slain.ogg": "/live-lol-esports/static/media/blue_dragon_slain.fb069b47.ogg",
@@ -35,10 +35,10 @@
     "static/media/tower.3a7fbe61.svg": "/live-lol-esports/static/media/tower.3a7fbe61.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.3335a78d.js",
+    "static/js/runtime-main.6307eac7.js",
     "static/css/2.abad2096.chunk.css",
-    "static/js/2.1293db8e.chunk.js",
+    "static/js/2.ef69b1c0.chunk.js",
     "static/css/main.cf154593.chunk.css",
-    "static/js/main.14f28690.chunk.js"
+    "static/js/main.c2510f7b.chunk.js"
   ]
 }
