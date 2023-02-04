@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/live-lol-esports/static/css/main.aabe91bf.chunk.css",
-    "main.js": "/live-lol-esports/static/js/main.68620dec.chunk.js",
+    "main.css": "/live-lol-esports/static/css/main.b37497dd.chunk.css",
+    "main.js": "/live-lol-esports/static/js/main.4c31924b.chunk.js",
     "runtime-main.js": "/live-lol-esports/static/js/runtime-main.f4424013.js",
     "static/css/2.abad2096.chunk.css": "/live-lol-esports/static/css/2.abad2096.chunk.css",
     "static/js/2.04819c83.chunk.js": "/live-lol-esports/static/js/2.04819c83.chunk.js",
@@ -33,14 +33,14 @@
     "static/media/red_dragon_slain.ogg": "/live-lol-esports/static/media/red_dragon_slain.0476846a.ogg",
     "static/media/red_inhibitor_destroyed.ogg": "/live-lol-esports/static/media/red_inhibitor_destroyed.7e539066.ogg",
     "static/media/red_turret_destroyed.ogg": "/live-lol-esports/static/media/red_turret_destroyed.65f33714.ogg",
-    "static/media/playerStatusStyle.css": "/live-lol-esports/static/media/team-tbd.f8e7ca97.svg",
+    "static/media/team-tbd.f8e7ca97.svg": "/live-lol-esports/static/media/team-tbd.f8e7ca97.svg",
     "static/media/tower.3a7fbe61.svg": "/live-lol-esports/static/media/tower.3a7fbe61.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.f4424013.js",
     "static/css/2.abad2096.chunk.css",
     "static/js/2.04819c83.chunk.js",
-    "static/css/main.aabe91bf.chunk.css",
-    "static/js/main.68620dec.chunk.js"
+    "static/css/main.b37497dd.chunk.css",
+    "static/js/main.4c31924b.chunk.js"
   ]
 }
