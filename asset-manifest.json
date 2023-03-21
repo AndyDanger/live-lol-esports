@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/live-lol-esports/static/css/main.1ee9ea13.chunk.css",
-    "main.js": "/live-lol-esports/static/js/main.20f7a024.chunk.js",
+    "main.css": "/live-lol-esports/static/css/main.a771028d.chunk.css",
+    "main.js": "/live-lol-esports/static/js/main.149d61a7.chunk.js",
     "runtime-main.js": "/live-lol-esports/static/js/runtime-main.f4424013.js",
     "static/css/2.abad2096.chunk.css": "/live-lol-esports/static/css/2.abad2096.chunk.css",
     "static/js/2.04819c83.chunk.js": "/live-lol-esports/static/js/2.04819c83.chunk.js",
@@ -15,6 +15,7 @@
     "static/media/blue_inhibitor_destroyed.ogg": "/live-lol-esports/static/media/blue_inhibitor_destroyed.1dca9d1a.ogg",
     "static/media/blue_turret_destroyed.ogg": "/live-lol-esports/static/media/blue_turret_destroyed.7f7dd295.ogg",
     "static/media/champion_slain.ogg": "/live-lol-esports/static/media/champion_slain.9c4732db.ogg",
+    "static/media/discord.d1d464bd.svg": "/live-lol-esports/static/media/discord.d1d464bd.svg",
     "static/media/dragon-chemtech.515ce319.svg": "/live-lol-esports/static/media/dragon-chemtech.515ce319.svg",
     "static/media/dragon-cloud.1a55fc30.svg": "/live-lol-esports/static/media/dragon-cloud.1a55fc30.svg",
     "static/media/dragon-elder.2dd99da4.svg": "/live-lol-esports/static/media/dragon-elder.2dd99da4.svg",
@@ -34,13 +35,14 @@
     "static/media/red_inhibitor_destroyed.ogg": "/live-lol-esports/static/media/red_inhibitor_destroyed.7e539066.ogg",
     "static/media/red_turret_destroyed.ogg": "/live-lol-esports/static/media/red_turret_destroyed.65f33714.ogg",
     "static/media/team-tbd.f8e7ca97.svg": "/live-lol-esports/static/media/team-tbd.f8e7ca97.svg",
-    "static/media/tower.3a7fbe61.svg": "/live-lol-esports/static/media/tower.3a7fbe61.svg"
+    "static/media/tower.3a7fbe61.svg": "/live-lol-esports/static/media/tower.3a7fbe61.svg",
+    "static/media/twitter.5ae9f4cf.svg": "/live-lol-esports/static/media/twitter.5ae9f4cf.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.f4424013.js",
     "static/css/2.abad2096.chunk.css",
     "static/js/2.04819c83.chunk.js",
-    "static/css/main.1ee9ea13.chunk.css",
-    "static/js/main.20f7a024.chunk.js"
+    "static/css/main.a771028d.chunk.css",
+    "static/js/main.149d61a7.chunk.js"
   ]
 }
