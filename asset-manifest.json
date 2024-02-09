@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/live-lol-esports/static/css/main.389f1104.chunk.css",
-    "main.js": "/live-lol-esports/static/js/main.0cc9c9e5.chunk.js",
+    "main.js": "/live-lol-esports/static/js/main.058dffa4.chunk.js",
     "runtime-main.js": "/live-lol-esports/static/js/runtime-main.f4424013.js",
     "static/css/2.abad2096.chunk.css": "/live-lol-esports/static/css/2.abad2096.chunk.css",
-    "static/js/2.5520f124.chunk.js": "/live-lol-esports/static/js/2.5520f124.chunk.js",
+    "static/js/2.dd70ed8d.chunk.js": "/live-lol-esports/static/js/2.dd70ed8d.chunk.js",
     "static/js/3.6c28e936.chunk.js": "/live-lol-esports/static/js/3.6c28e936.chunk.js",
     "index.html": "/live-lol-esports/index.html",
-    "static/js/2.5520f124.chunk.js.LICENSE.txt": "/live-lol-esports/static/js/2.5520f124.chunk.js.LICENSE.txt",
+    "static/js/2.dd70ed8d.chunk.js.LICENSE.txt": "/live-lol-esports/static/js/2.dd70ed8d.chunk.js.LICENSE.txt",
     "static/js/3.6c28e936.chunk.js.LICENSE.txt": "/live-lol-esports/static/js/3.6c28e936.chunk.js.LICENSE.txt",
     "static/media/baron.99733951.svg": "/live-lol-esports/static/media/baron.99733951.svg",
     "static/media/blue_baron_slain.ogg": "/live-lol-esports/static/media/blue_baron_slain.37a49b32.ogg",
@@ -35,15 +35,15 @@
     "static/media/red_dragon_slain.ogg": "/live-lol-esports/static/media/red_dragon_slain.0476846a.ogg",
     "static/media/red_inhibitor_destroyed.ogg": "/live-lol-esports/static/media/red_inhibitor_destroyed.7e539066.ogg",
     "static/media/red_turret_destroyed.ogg": "/live-lol-esports/static/media/red_turret_destroyed.65f33714.ogg",
-    "static/media/team-tbd.b0f70c24.svg": "/live-lol-esports/static/media/team-tbd.b0f70c24.svg",
+    "static/media/team-tbd.f8e7ca97.svg": "/live-lol-esports/static/media/team-tbd.f8e7ca97.svg",
     "static/media/tower.3a7fbe61.svg": "/live-lol-esports/static/media/tower.3a7fbe61.svg",
     "static/media/twitter.5ae9f4cf.svg": "/live-lol-esports/static/media/twitter.5ae9f4cf.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.f4424013.js",
     "static/css/2.abad2096.chunk.css",
-    "static/js/2.5520f124.chunk.js",
+    "static/js/2.dd70ed8d.chunk.js",
     "static/css/main.389f1104.chunk.css",
-    "static/js/main.0cc9c9e5.chunk.js"
+    "static/js/main.058dffa4.chunk.js"
   ]
 }
