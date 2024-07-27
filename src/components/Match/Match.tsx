@@ -17,7 +17,11 @@ import Loading from '../../assets/images/loading.svg'
 import { ReactComponent as TeamTBDSVG } from '../../assets/images/team-tbd.svg';
 import { MatchDetails } from "./MatchDetails"
 import { Game } from "./Game";
-import { EventDetails, DetailsFrame, GameMetadata, Item, Outcome, Record, Result, ScheduleEvent, Standing, WindowFrame, Rune } from "../types/baseTypes"
+import { EventDetails, DetailsFrame, GameMetadata, Item, Outcome, Record, Result, ScheduleEvent, Standing, WindowFrame, Rune, ExtendedVod } from "../types/baseTypes"
+import { ChatToggler } from '../Navbar/ChatToggler';
+import { TwitchEmbed, TwitchEmbedLayout } from 'twitch-player';
+import { GameDetails } from './GameDetails';
+
 
 export function Match({ match }: any) {
     const [eventDetails, setEventDetails] = useState<EventDetails>();
@@ -32,6 +36,10 @@ export function Match({ match }: any) {
     const [gameIndex, setGameIndex] = useState<number>();
     const [items, setItems] = useState<Item[]>();
     const [runes, setRunes] = useState<Rune[]>();
+    const [videoProvider, setVideoProvider] = useState<string>();
+    const [videoParameter, setVideoParameter] = useState<string>();
+    const chatData = localStorage.getItem("chat");
+    const chatEnabled = chatData ? chatData === `unmute` : false
 
     const matchId = match.params.gameid;
     let matchEventDetails = eventDetails
@@ -223,7 +231,218 @@ export function Match({ match }: any) {
                 setRunes(response.data)
             })
         }
+
     }, [matchId]);
+
+    function capitalizeFirstLetter(string: string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    $(`.copy-champion-names`).prop("onclick", null).off("click");
+    $(`.copy-champion-names`).on(`click`, () => {
+        if (!metadata) return
+        let championNames: Array<String> = []
+        metadata.blueTeamMetadata.participantMetadata.forEach(participant => {
+            championNames.push(participant.championId)
+        })
+
+        metadata.redTeamMetadata.participantMetadata.forEach(participant => {
+            championNames.push(participant.championId)
+        })
+        navigator.clipboard.writeText(championNames.join("\t"));
+    })
+
+    $(`#streamDropdown`).prop("onchange", null).off("change");
+    $(`#streamDropdown`).on(`change`, (e) => {
+        let optionSelected = $("option:selected", e.target);
+
+        setVideoParameter(optionSelected.attr(`data-parameter`) || videoParameter)
+        setVideoProvider(optionSelected.attr(`data-provider`) || videoProvider)
+        let videoPlayer = document.querySelector(`#video-player`)
+        if (videoPlayer) {
+            videoPlayer.removeAttribute(`added`)
+        }
+
+    })
+
+    const coStreamers: Array<ExtendedVod> = [
+        {
+            coStreamer: true,
+            locale: `en-US`,
+            offset: 0,
+            parameter: `caedrel`,
+            provider: `twitch`,
+            mediaLocale: {
+                englishName: `Caedrel`,
+                translatedName: `Caedrel`,
+                locale: `en-US`
+            }
+        },
+        {
+            coStreamer: true,
+            locale: `en-US`,
+            offset: 0,
+            parameter: `doublelift`,
+            provider: `twitch`,
+            mediaLocale: {
+                englishName: `Doublelift`,
+                translatedName: `Doublelift`,
+                locale: `en-US`
+            }
+        },
+        {
+            coStreamer: true,
+            locale: `en-ES`,
+            offset: 0,
+            parameter: `ibai`,
+            provider: `twitch`,
+            mediaLocale: {
+                englishName: `Ibai`,
+                translatedName: `Ibai`,
+                locale: `en-ES`
+            }
+        },
+        {
+            coStreamer: true,
+            locale: `en-US`,
+            offset: 0,
+            parameter: `initialisecasts`,
+            provider: `twitch`,
+            mediaLocale: {
+                englishName: `Initiliase`,
+                translatedName: `Initiliase`,
+                locale: `en-US`
+            }
+        },
+        {
+            coStreamer: true,
+            locale: `en-US`,
+            offset: 0,
+            parameter: `iwdominate`,
+            provider: `twitch`,
+            mediaLocale: {
+                englishName: `IWillDominate`,
+                translatedName: `IWillDominate`,
+                locale: `en-US`
+            }
+        },
+        {
+            coStreamer: true,
+            locale: `en-US`,
+            offset: 0,
+            parameter: `imls`,
+            provider: `twitch`,
+            mediaLocale: {
+                englishName: `LS`,
+                translatedName: `LS`,
+                locale: `en-US`
+            }
+        },
+        {
+            coStreamer: true,
+            locale: `en-US`,
+            offset: 0,
+            parameter: `nymaera_`,
+            provider: `twitch`,
+            mediaLocale: {
+                englishName: `Nymaera`,
+                translatedName: `Nymaera`,
+                locale: `en-US`
+            }
+        },
+        {
+            coStreamer: true,
+            locale: `en-US`,
+            offset: 0,
+            parameter: `yamatocannon`,
+            provider: `twitch`,
+            mediaLocale: {
+                englishName: `YamatoCannon`,
+                translatedName: `YamatoCannon`,
+                locale: `en-US`
+            }
+        }]
+
+    function getStreamDropdown(eventDetails: EventDetails) {
+        let streamsOrVods: Array<ExtendedVod> = []
+        let vods = eventDetails.match.games[gameIndex ? gameIndex - 1 : 0].vods
+
+        if (vods.length) {
+            streamsOrVods = vods
+        } else {
+            if (!eventDetails.streams || !eventDetails.streams.length) {
+                return (<span>No streams or vods currently available</span>)
+            }
+            streamsOrVods = eventDetails.streams.sort((a, b) => {
+                if (!a.coStreamer && a.mediaLocale.locale.includes(`en-`)) {
+                    if (a.provider === `youtube` && !b.coStreamer && b.mediaLocale.locale.includes(`en-`)) return 1
+                    return -1
+                }
+                if (b.coStreamer) {
+                    return b.offset - a.offset
+                }
+                return 1
+            })
+            coStreamers.forEach(streamer => {
+                const foundStream = streamsOrVods.find(stream => stream.parameter === streamer.parameter)
+                if (!foundStream) {
+                    streamsOrVods.push(streamer)
+                }
+            })
+        }
+
+        let dropdown = streamsOrVods.map(stream => {
+            let streamOffset = Math.round(stream.offset / 1000 / 60 * -1)
+            let delayString = streamOffset > 1 ? `~${streamOffset} minutes` : `<1 minute`
+            let streamString = vods.length ? `VOD: ${capitalizeFirstLetter(stream.provider)}(${stream.locale})` : stream.coStreamer ? stream.mediaLocale.englishName : stream.provider === `twitch` ? `${capitalizeFirstLetter(stream.provider)}(${stream.locale}) - ${stream.parameter} - Delay: ${delayString}` : `${capitalizeFirstLetter(stream.provider)}(${stream.locale}) - Delay: ${delayString}`
+            return <option value={stream.parameter} data-provider={stream.provider} data-parameter={stream.parameter}>{streamString}</option>
+        })
+
+        let videoPlayer = document.querySelector(`#video-player`)
+
+        if (videoPlayer && (!videoPlayer.hasAttribute(`added`) || (vods.length && videoParameter !== streamsOrVods[0].parameter))) {
+            setVideoParameter(streamsOrVods[0].parameter)
+            setVideoProvider(streamsOrVods[0].provider)
+            videoPlayer.removeAttribute(`added`)
+            getVideoPlayer(streamsOrVods[0].parameter)
+        }
+
+        return (<select id="streamDropdown" className='footer-notes'>{dropdown}</select>)
+    }
+
+    function getVideoPlayer(newParameter?: string) {
+        let parameter = newParameter || videoParameter
+        let videoPlayer = document.querySelector(`#video-player`)
+        if (!parameter || !videoProvider) return
+        if (videoPlayer && !videoPlayer.hasAttribute(`added`)) {
+            videoPlayer.setAttribute(`added`, `true`)
+            if (videoProvider === "youtube") {
+                videoPlayer.innerHTML = `
+                <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/${parameter}?autoplay=1"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title="Embedded youtube"
+                    </iframe>`
+
+                if (chatEnabled) {
+                    videoPlayer.innerHTML += `<iframe width="350px" height="500px" src="https://www.youtube.com/live\_chat?v=${parameter}" ></iframe>`
+                }
+
+            } else {
+                videoPlayer.innerHTML = ``
+                const embed = new TwitchEmbed(`video-player`, {
+                    width: `100%`,
+                    height: `100%`,
+                    channel: videoParameter,
+                    layout: chatEnabled ? TwitchEmbedLayout.VIDEO_WITH_CHAT : TwitchEmbedLayout.VIDEO,
+                });
+            }
+        }
+    }
 
     if (firstWindowFrame !== undefined && lastWindowFrame !== undefined && lastDetailsFrame !== undefined && metadata !== undefined && eventDetails !== undefined && currentGameOutcome !== undefined && scheduleEvent !== undefined && gameIndex !== undefined && items !== undefined && runes !== undefined) {
         return (
@@ -235,75 +454,102 @@ export function Match({ match }: any) {
     } else if (eventDetails !== undefined) {
         document.title = `🟡 ${eventDetails.league.name} - ${eventDetails?.match.teams[0].name} vs. ${eventDetails?.match.teams[1].name}`;
         return (
-            <div className="loading-game-container">
-                <div>
-                    <img className="loading-game-image" alt="game loading" src={Loading} />
-                    {eventDetails ? (<h3>{eventDetails?.league.name}</h3>) : null}
-                    <div className="live-game-card-content">
-                        <div className="live-game-card-team">
-                            {eventDetails.match.teams[0].code === "TBD" ? (<TeamTBDSVG className="live-game-card-team-image" />) : (<img className="live-game-card-team-image" src={eventDetails.match.teams[0].image} alt={eventDetails.match.teams[0].name} />)}
-                            <span className="live-game-card-title">
-                                <span>
-                                    <h4>
-                                        {eventDetails?.match.teams[0].name}
-                                    </h4>
+            <div>
+                <div className="loading-game-container">
+                    <div>
+                        {eventDetails ? (<h3>{eventDetails?.league.name}</h3>) : null}
+                        <div className="live-game-card-content">
+                            <div className="live-game-card-team">
+                                {eventDetails.match.teams[0].code === "TBD" ? (<TeamTBDSVG className="live-game-card-team-image" />) : (<img className="live-game-card-team-image" src={eventDetails.match.teams[0].image} alt={eventDetails.match.teams[0].name} />)}
+                                <span className="live-game-card-title">
+                                    <span>
+                                        <h4>
+                                            {eventDetails?.match.teams[0].name}
+                                        </h4>
+                                    </span>
+                                    {currentGameOutcome ?
+                                        (<span className="outcome">
+                                            <p className={currentGameOutcome[0].outcome}>
+                                                {currentGameOutcome[0].outcome}
+                                            </p>
+                                        </span>)
+                                        : null}
+                                    {records ?
+                                        (<span>
+                                            <p>
+                                                {records[0].wins} - {records[0].losses}
+                                            </p>
+                                        </span>)
+                                        : null}
                                 </span>
-                                {currentGameOutcome ?
-                                    (<span className="outcome">
-                                        <p className={currentGameOutcome[0].outcome}>
-                                            {currentGameOutcome[0].outcome}
-                                        </p>
-                                    </span>)
-                                    : null}
-                                {records ?
+                            </div>
+                            <div className="game-card-versus">
+                                <span>BEST OF {eventDetails.match.strategy.count}</span>
+                                {eventDetails.match.teams[0].result && eventDetails.match.teams[1].result ?
                                     (<span>
                                         <p>
-                                            {records[0].wins} - {records[0].losses}
+                                            {eventDetails.match.teams[0].result.gameWins} - {eventDetails.match.teams[1].result.gameWins}
                                         </p>
                                     </span>)
                                     : null}
-                            </span>
-                        </div>
-                        <div className="game-card-versus">
-                            <span>BEST OF {eventDetails.match.strategy.count}</span>
-                            {eventDetails.match.teams[0].result && eventDetails.match.teams[1].result ?
-                                (<span>
-                                    <p>
-                                        {eventDetails.match.teams[0].result.gameWins} - {eventDetails.match.teams[1].result.gameWins}
-                                    </p>
-                                </span>)
-                                : null}
-                            <h1>VS</h1>
-                        </div>
-                        <div className="live-game-card-team">
-                            {eventDetails.match.teams[1].code === "TBD" ? (<TeamTBDSVG className="live-game-card-team-image" />) : (<img className="live-game-card-team-image" src={eventDetails.match.teams[1].image} alt={eventDetails.match.teams[1].name} />)}
-                            <span className="live-game-card-title">
-                                <span>
-                                    <h4>
-                                        {eventDetails?.match.teams[1].name}
-                                    </h4>
+                                <h1>VS</h1>
+                            </div>
+                            <div className="live-game-card-team">
+                                {eventDetails.match.teams[1].code === "TBD" ? (<TeamTBDSVG className="live-game-card-team-image" />) : (<img className="live-game-card-team-image" src={eventDetails.match.teams[1].image} alt={eventDetails.match.teams[1].name} />)}
+                                <span className="live-game-card-title">
+                                    <span>
+                                        <h4>
+                                            {eventDetails?.match.teams[1].name}
+                                        </h4>
+                                    </span>
+                                    {currentGameOutcome ?
+                                        (<span className="outcome">
+                                            <p className={currentGameOutcome[1].outcome}>
+                                                {currentGameOutcome[1].outcome}
+                                            </p>
+                                        </span>)
+                                        : null}
+                                    {records ?
+                                        (<span>
+                                            <p>
+                                                {records[1].wins} - {records[1].losses}
+                                            </p>
+                                        </span>)
+                                        : null}
                                 </span>
-                                {currentGameOutcome ?
-                                    (<span className="outcome">
-                                        <p className={currentGameOutcome[1].outcome}>
-                                            {currentGameOutcome[1].outcome}
-                                        </p>
-                                    </span>)
-                                    : null}
-                                {records ?
-                                    (<span>
-                                        <p>
-                                            {records[1].wins} - {records[1].losses}
-                                        </p>
-                                    </span>)
-                                    : null}
-                            </span>
+                            </div>
                         </div>
+                        {scheduleEvent && eventDetails ?
+                            (<h3>Game {getNextUnstartedGameIndex(eventDetails)} out of {eventDetails.match.strategy.count} will start at {new Date(scheduleEvent.startTime).toLocaleTimeString([], { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</h3>)
+                            : null
+                        }
+
+                        <img className="loading-game-image" alt="game loading" src={Loading} />
                     </div>
-                    {scheduleEvent && eventDetails ?
-                        (<h3>Game {getNextUnstartedGameIndex(eventDetails)} out of {eventDetails.match.strategy.count} will start at {new Date(scheduleEvent.startTime).toLocaleTimeString([], { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</h3>)
-                        : null
-                    }
+                </div>
+                <div className="status-live-game-card">
+                    <GameDetails eventDetails={eventDetails} gameIndex={gameIndex || 0} />
+                    <div className="status-live-game-card-content">
+                        {metadata ? (
+                            <div>
+                                <span className="footer-notes">
+                                    <a target="_blank" href={`https://www.leagueoflegends.com/en-us/news/game-updates/patch-${metadata.patchVersion.split(`.`).slice(0, 2).join(`-`)}-notes/`}>Patch Version: {metadata.patchVersion}</a>
+                                </span>
+                                <span className="footer-notes">
+                                    <a href="javascript:void(0);" className="copy-champion-names">
+                                        Copy Champion Names
+                                    </a>
+                                </span>
+                            </div>
+                        ) : null}
+                        {getStreamDropdown(eventDetails)}
+                        <div className='chatDiv'>
+                            <span className='footer-notes'>Chat Enabled:</span>
+                            <ChatToggler />
+                        </div>
+                        <div id="video-player" className={chatEnabled ? `chatEnabled` : ``}></div>
+                        {getVideoPlayer()}
+                    </div>
                 </div>
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4163525631983528" crossOrigin="anonymous"></script>
                 <ins className="adsbygoogle"
