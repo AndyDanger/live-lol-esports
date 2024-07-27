@@ -243,42 +243,47 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
         }]
 
     function getStreamDropdown(eventDetails: EventDetails) {
-        const currentProvider = videoProvider
-        const currentParameter = videoParameter
+        let streamsOrVods: Array<ExtendedVod> = []
         let vods = eventDetails.match.games[gameIndex - 1].vods
-        // if (vods.length) {
-        //     return (<span className="footer-notes"><a href={getExtendedVodLink(vods[0])} target="_blank" rel="noreferrer">VOD Link</a></span>)
-        // }
 
-        if (!eventDetails.streams || !eventDetails.streams.length) {
-            return (<span>No streams currently available</span>)
-        }
-        let streamsSortedByDelay = eventDetails.streams.sort((a, b) => b.coStreamer ? b.offset - a.offset : 1)
-        coStreamers.forEach(streamer => {
-            const foundStream = streamsSortedByDelay.find(stream => stream.parameter === streamer.parameter)
-            if (!foundStream) {
-                streamsSortedByDelay.push(streamer)
+        if (vods.length) {
+            streamsOrVods = vods
+        } else {
+            if (!eventDetails.streams || !eventDetails.streams.length) {
+                return (<span>No streams or vods currently available</span>)
             }
-        })
-        let dropdown = streamsSortedByDelay.map(stream => {
+            streamsOrVods = eventDetails.streams.sort((a, b) => b.coStreamer ? b.offset - a.offset : 1)
+            coStreamers.forEach(streamer => {
+                const foundStream = streamsOrVods.find(stream => stream.parameter === streamer.parameter)
+                if (!foundStream) {
+                    streamsOrVods.push(streamer)
+                }
+            })
+        }
+
+        let dropdown = streamsOrVods.map(stream => {
             let streamOffset = Math.round(stream.offset / 1000 / 60 * -1)
             let delayString = streamOffset > 1 ? `~${streamOffset} minutes` : `<1 minute`
-            let streamString = stream.coStreamer ? stream.mediaLocale.englishName : stream.provider === `twitch` ? `${capitalizeFirstLetter(stream.provider)}(${stream.locale}) - ${stream.parameter} - Delay: ${delayString}` : `${capitalizeFirstLetter(stream.provider)}(${stream.locale}) - Delay: ${delayString}`
+            let streamString = vods.length ? `VOD: ${capitalizeFirstLetter(stream.provider)}(${stream.locale})` : stream.coStreamer ? stream.mediaLocale.englishName : stream.provider === `twitch` ? `${capitalizeFirstLetter(stream.provider)}(${stream.locale}) - ${stream.parameter} - Delay: ${delayString}` : `${capitalizeFirstLetter(stream.provider)}(${stream.locale}) - Delay: ${delayString}`
             return <option value={stream.parameter} data-provider={stream.provider} data-parameter={stream.parameter}>{streamString}</option>
         })
 
         let videoPlayer = document.querySelector(`#video-player`)
-        if (videoPlayer && !videoPlayer.hasAttribute(`added`)) {
-            setVideoParameter(streamsSortedByDelay[0].parameter)
-            setVideoProvider(streamsSortedByDelay[0].provider)
+
+        if (videoPlayer && (!videoPlayer.hasAttribute(`added`) || (vods.length && videoParameter !== streamsOrVods[0].parameter))) {
+            setVideoParameter(streamsOrVods[0].parameter)
+            setVideoProvider(streamsOrVods[0].provider)
+            videoPlayer.removeAttribute(`added`)
+            getVideoPlayer(streamsOrVods[0].parameter)
         }
 
         return (<select id="streamDropdown" className='footer-notes'>{dropdown}</select>)
     }
 
-    function getVideoPlayer() {
+    function getVideoPlayer(newParameter?: string) {
+        let parameter = newParameter || videoParameter
         let videoPlayer = document.querySelector(`#video-player`)
-        if (!videoParameter || !videoProvider) return
+        if (!parameter || !videoProvider) return
         if (videoPlayer && !videoPlayer.hasAttribute(`added`)) {
             videoPlayer.setAttribute(`added`, `true`)
             if (videoProvider === "youtube") {
@@ -286,7 +291,7 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
                 <iframe
                     width="100%"
                     height="100%"
-                    src="https://www.youtube.com/embed/${videoParameter}?autoplay=1"
+                    src="https://www.youtube.com/embed/${parameter}?autoplay=1"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -294,7 +299,7 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
                     </iframe>`
 
                 if (chatEnabled) {
-                    videoPlayer.innerHTML += `<iframe width="350px" height="500px" src="https://www.youtube.com/live\_chat?v=${videoParameter}" ></iframe>`
+                    videoPlayer.innerHTML += `<iframe width="350px" height="500px" src="https://www.youtube.com/live\_chat?v=${parameter}" ></iframe>`
                 }
 
             } else {
@@ -307,10 +312,6 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
                 });
             }
         }
-    }
-
-    function getExtendedVodLink(extendedVod: ExtendedVod) {
-        return extendedVod.provider === "youtube" ? `https://www.youtube.com/watch?v=${extendedVod.parameter}` : `https://www.twitch.tv/${extendedVod.parameter}`
     }
 
     return (
