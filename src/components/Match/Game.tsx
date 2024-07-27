@@ -209,6 +209,18 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
             coStreamer: true,
             locale: `en-US`,
             offset: 0,
+            parameter: `initialisecasts`,
+            provider: `twitch`,
+            mediaLocale: {
+                englishName: `Initiliase`,
+                translatedName: `Initiliase`,
+                locale: `en-US`
+            }
+        },
+        {
+            coStreamer: true,
+            locale: `en-US`,
+            offset: 0,
             parameter: `iwdominate`,
             provider: `twitch`,
             mediaLocale: {
@@ -226,6 +238,18 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
             mediaLocale: {
                 englishName: `LS`,
                 translatedName: `LS`,
+                locale: `en-US`
+            }
+        },
+        {
+            coStreamer: true,
+            locale: `en-US`,
+            offset: 0,
+            parameter: `nymaera_`,
+            provider: `twitch`,
+            mediaLocale: {
+                englishName: `Nymaera`,
+                translatedName: `Nymaera`,
                 locale: `en-US`
             }
         },
