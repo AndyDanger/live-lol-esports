@@ -117,7 +117,7 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
     */
     const summonerName = gameMetadata.blueTeamMetadata.participantMetadata[0].summonerName.split(" ");
 
-    if ((summonerName[0] && redTeam.code.startsWith(summonerName[0])) || gameMetadata.blueTeamMetadata.esportsTeamId !== blueTeam.id) { // Temos que verificar apenas os primeiros caracteres pois os times academy usam o A, a mais na tag mas não nos nomes
+    if ((summonerName[0] && summonerName[0].startsWith(redTeam.code)) || gameMetadata.blueTeamMetadata.esportsTeamId !== blueTeam.id) { // Temos que verificar apenas os primeiros caracteres pois os times academy usam o A, a mais na tag mas não nos nomes
         blueTeam = redTeam;
         redTeam = auxBlueTeam;
     }
