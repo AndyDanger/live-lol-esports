@@ -268,6 +268,18 @@ export function Match({ match }: any) {
     const coStreamers: Array<ExtendedVod> = [
         {
             coStreamer: true,
+            locale: `en-CN`,
+            offset: 0,
+            parameter: `lpl`,
+            provider: `huya`,
+            mediaLocale: {
+                englishName: `LPL - Huya`,
+                translatedName: `LPL - Huya`,
+                locale: `en-CN`
+            }
+        },
+        {
+            coStreamer: true,
             locale: `en-US`,
             offset: 0,
             parameter: `caedrel`,
@@ -371,7 +383,11 @@ export function Match({ match }: any) {
             streamsOrVods = vods
         } else {
             if (!eventDetails.streams || !eventDetails.streams.length) {
-                return (<span>No streams or vods currently available</span>)
+                if (eventDetails.match.games[gameIndex ? gameIndex - 1 : 0].state === "completed") {
+                    return (<span>No VODS currently available</span>)
+                } else {
+                    eventDetails.streams = []
+                }
             }
             streamsOrVods = eventDetails.streams.sort((a, b) => {
                 if (!a.coStreamer && a.mediaLocale.locale.includes(`en-`)) {
@@ -432,7 +448,7 @@ export function Match({ match }: any) {
                     videoPlayer.innerHTML += `<iframe width="350px" height="500px" src="https://www.youtube.com/live\_chat?v=${parameter}" ></iframe>`
                 }
 
-            } else {
+            } else if (videoProvider === "twitch") {
                 videoPlayer.innerHTML = ``
                 const embed = new TwitchEmbed(`video-player`, {
                     width: `100%`,
@@ -440,6 +456,9 @@ export function Match({ match }: any) {
                     channel: videoParameter,
                     layout: chatEnabled ? TwitchEmbedLayout.VIDEO_WITH_CHAT : TwitchEmbedLayout.VIDEO,
                 });
+            } else if (videoProvider === "huya") {
+                videoPlayer.innerHTML =
+                    `<iframe width="100%" height="100%"  frameborder="0" scrolling="no" src="https://liveshare.huya.com/iframe/lpl"></iframe>`
             }
         }
     }

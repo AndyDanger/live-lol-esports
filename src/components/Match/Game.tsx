@@ -173,6 +173,18 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
             coStreamer: true,
             locale: `en-US`,
             offset: 0,
+            parameter: `lpl`,
+            provider: `huya`,
+            mediaLocale: {
+                englishName: `LPL - Huya`,
+                translatedName: `LPL - Huya`,
+                locale: `en-US`
+            }
+        },
+        {
+            coStreamer: true,
+            locale: `en-US`,
+            offset: 0,
             parameter: `caedrel`,
             provider: `twitch`,
             mediaLocale: {
@@ -274,7 +286,11 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
             streamsOrVods = vods
         } else {
             if (!eventDetails.streams || !eventDetails.streams.length) {
-                return (<span>No streams or vods currently available</span>)
+                if (eventDetails.match.games[gameIndex - 1].state === "completed") {
+                    return (<span>No VODS currently available</span>)
+                } else {
+                    eventDetails.streams = []
+                }
             }
             streamsOrVods = eventDetails.streams.sort((a, b) => b.coStreamer ? b.offset - a.offset : 1)
             coStreamers.forEach(streamer => {
@@ -326,7 +342,7 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
                     videoPlayer.innerHTML += `<iframe width="350px" height="500px" src="https://www.youtube.com/live\_chat?v=${parameter}" ></iframe>`
                 }
 
-            } else {
+            } else if (videoProvider === "twitch") {
                 videoPlayer.innerHTML = ``
                 const embed = new TwitchEmbed(`video-player`, {
                     width: `100%`,
@@ -334,6 +350,9 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
                     channel: videoParameter,
                     layout: chatEnabled ? TwitchEmbedLayout.VIDEO_WITH_CHAT : TwitchEmbedLayout.VIDEO,
                 });
+            } else if (videoProvider === "huya") {
+                videoPlayer.innerHTML =
+                    `<iframe width="100%" height="100%"  frameborder="0" scrolling="no" src="https://liveshare.huya.com/iframe/lpl"></iframe>`
             }
         }
     }
