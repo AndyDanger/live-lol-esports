@@ -173,18 +173,6 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
             coStreamer: true,
             locale: `en-US`,
             offset: 0,
-            parameter: `lpl`,
-            provider: `huya`,
-            mediaLocale: {
-                englishName: `LPL - Huya`,
-                translatedName: `LPL - Huya`,
-                locale: `en-US`
-            }
-        },
-        {
-            coStreamer: true,
-            locale: `en-US`,
-            offset: 0,
             parameter: `caedrel`,
             provider: `twitch`,
             mediaLocale: {
@@ -250,6 +238,18 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
             mediaLocale: {
                 englishName: `LS`,
                 translatedName: `LS`,
+                locale: `en-US`
+            }
+        },
+        {
+            coStreamer: true,
+            locale: `en-US`,
+            offset: 0,
+            parameter: `lpl`,
+            provider: `huya`,
+            mediaLocale: {
+                englishName: `LPL - Huya`,
+                translatedName: `LPL - Huya`,
                 locale: `en-US`
             }
         },
