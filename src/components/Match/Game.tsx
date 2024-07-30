@@ -353,6 +353,9 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
             } else if (videoProvider === "huya") {
                 videoPlayer.innerHTML =
                     `<iframe width="100%" height="100%"  frameborder="0" scrolling="no" src="https://liveshare.huya.com/iframe/lpl"></iframe>`
+            } else if (videoProvider === "afreecatv") {
+                videoPlayer.innerHTML = 
+                `<iframe src="https://play.afreecatv.com/${parameter}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>`
             }
         }
     }

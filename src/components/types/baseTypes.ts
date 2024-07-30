@@ -48,7 +48,7 @@ export interface ExtendedVod {
     locale: string;
     offset: number;
     parameter: string;
-    provider: "youtube" | "twitch" | "huya";
+    provider: "youtube" | "twitch" | "huya" | "afreecatv";
     mediaLocale: {
         englishName: string;
         translatedName: string;
