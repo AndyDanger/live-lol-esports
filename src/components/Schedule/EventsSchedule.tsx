@@ -94,7 +94,7 @@ function filterLiveEvents(scheduleEvent: ScheduleEvent) {
 }
 
 function filterByLast7Days(scheduleEvent: ScheduleEvent) {
-    if (scheduleEvent.state === "completed" || (scheduleEvent.match.teams[0].result && scheduleEvent.match.teams[0].result.outcome)) {
+    if (scheduleEvent.state === "completed" || (scheduleEvent.match !== undefined && (scheduleEvent.match.teams[0].result && scheduleEvent.match.teams[0].result.outcome))) {
         let minDate = new Date();
         let maxDate = new Date()
         minDate.setDate(minDate.getDate() - 7)
@@ -108,6 +108,7 @@ function filterByLast7Days(scheduleEvent: ScheduleEvent) {
 
             return true;
         } else {
+            console.log(`here`)
             return false;
         }
     } else {
