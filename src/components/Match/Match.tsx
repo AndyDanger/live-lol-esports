@@ -268,18 +268,6 @@ export function Match({ match }: any) {
     const coStreamers: Array<ExtendedVod> = [
         {
             coStreamer: true,
-            locale: `en-CN`,
-            offset: 0,
-            parameter: `lpl`,
-            provider: `huya`,
-            mediaLocale: {
-                englishName: `LPL - Huya`,
-                translatedName: `LPL - Huya`,
-                locale: `en-CN`
-            }
-        },
-        {
-            coStreamer: true,
             locale: `en-US`,
             offset: 0,
             parameter: `caedrel`,
@@ -336,6 +324,18 @@ export function Match({ match }: any) {
                 englishName: `IWillDominate`,
                 translatedName: `IWillDominate`,
                 locale: `en-US`
+            }
+        },
+        {
+            coStreamer: true,
+            locale: `en-CN`,
+            offset: 0,
+            parameter: `lpl`,
+            provider: `huya`,
+            mediaLocale: {
+                englishName: `LPL - Huya`,
+                translatedName: `LPL - Huya`,
+                locale: `en-CN`
             }
         },
         {
