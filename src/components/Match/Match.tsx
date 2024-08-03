@@ -366,6 +366,18 @@ export function Match({ match }: any) {
             coStreamer: true,
             locale: `en-US`,
             offset: 0,
+            parameter: `loltyler1`,
+            provider: `twitch`,
+            mediaLocale: {
+                englishName: `Tyler1`,
+                translatedName: `Tyler1`,
+                locale: `en-US`
+            }
+        },
+        {
+            coStreamer: true,
+            locale: `en-US`,
+            offset: 0,
             parameter: `yamatocannon`,
             provider: `twitch`,
             mediaLocale: {
