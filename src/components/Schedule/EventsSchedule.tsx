@@ -117,7 +117,7 @@ function filterByLast7Days(scheduleEvent: ScheduleEvent) {
 }
 
 function filterByNext7Days(scheduleEvent: ScheduleEvent) {
-    if (scheduleEvent.state === "inProgress" || scheduleEvent.state === "completed") {
+    if (scheduleEvent.state === "inProgress" || (scheduleEvent.state === "completed" && (scheduleEvent.match.teams[0].result && scheduleEvent.match.teams[0].result.gameWins > 0) || (scheduleEvent.match.teams[1].result && scheduleEvent.match.teams[1].result.gameWins > 0))) {
         return
     }
     let minDate = new Date();
