@@ -178,12 +178,10 @@ function createToast(blueTeam: boolean, soundIsPlaying: boolean, sound: string, 
                 <h4 style={{ color: "#FFF" }}>{message}</h4>
             </div>
             , {
-                icon: false,
                 pauseOnHover: false,
                 pauseOnFocusLoss: false,
                 position: toast.POSITION.TOP_LEFT,
                 toastId: toastId,
-                theme: "colored"
             }
         )
     } else {
@@ -193,12 +191,10 @@ function createToast(blueTeam: boolean, soundIsPlaying: boolean, sound: string, 
                 <h4 style={{ color: "#FFF" }}>{message}</h4>
             </div>
             , {
-                icon: false,
                 pauseOnHover: false,
                 pauseOnFocusLoss: false,
                 position: toast.POSITION.TOP_RIGHT,
                 toastId: toastId,
-                theme: "colored"
             }
         )
     }
