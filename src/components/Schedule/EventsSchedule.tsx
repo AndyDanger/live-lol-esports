@@ -90,7 +90,7 @@ function EventCards({ emptyMessage, scheduleEvents, title }: EventCardProps) {
 }
 
 function filterLiveEvents(scheduleEvent: ScheduleEvent) {
-    return scheduleEvent.match !== undefined && (scheduleEvent.state === "inProgress" || (scheduleEvent.state === "unstarted" && ((scheduleEvent.match.teams[0].result && scheduleEvent.match.teams[0].result.gameWins > 0 && !scheduleEvent.match.teams[0].result.outcome) || scheduleEvent.match.teams[0].result && scheduleEvent.match.teams[1].result.gameWins > 0 && !scheduleEvent.match.teams[1].result.outcome)));
+    return scheduleEvent.match !== undefined && (scheduleEvent.state === "inProgress" || (scheduleEvent.state === "unstarted" && ((scheduleEvent.match.teams[0].result && scheduleEvent.match.teams[0].result.gameWins > 0 && !scheduleEvent.match.teams[0].result.outcome) || scheduleEvent.match.teams[0].result && scheduleEvent.match.teams[1].result && scheduleEvent.match.teams[1].result.gameWins > 0 && !scheduleEvent.match.teams[1].result.outcome)));
 }
 
 function filterByLast7Days(scheduleEvent: ScheduleEvent) {
