@@ -27,6 +27,7 @@ import { LiveAPIWatcher } from "./LiveAPIWatcher";
 import { CHAMPIONS_URL, RUNES_JSON_URL, getDataDragonResponse, getFormattedPatchVersion } from '../../utils/LoLEsportsAPI';
 import { TwitchEmbed, TwitchEmbedLayout } from 'twitch-player';
 import { ChatToggler } from '../Navbar/ChatToggler';
+import { StreamToggler } from '../Navbar/StreamToggler';
 
 type Props = {
     firstWindowFrame: WindowFrame,
@@ -54,6 +55,8 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
     const [videoParameter, setVideoParameter] = useState<string>();
     const chatData = localStorage.getItem("chat");
     const chatEnabled = chatData ? chatData === `unmute` : false
+    const streamData = localStorage.getItem("stream");
+    const streamEnabled = streamData ? streamData === `unmute` : false
 
     useEffect(() => {
         let currentGameState: GameState = GameState[lastWindowFrame.gameState as keyof typeof GameState]
@@ -362,8 +365,8 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
                 videoPlayer.innerHTML =
                     `<iframe width="100%" height="100%"  frameborder="0" scrolling="no" src="https://liveshare.huya.com/iframe/lpl"></iframe>`
             } else if (videoProvider === "afreecatv") {
-                videoPlayer.innerHTML = 
-                `<iframe src="https://play.afreecatv.com/${parameter}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>`
+                videoPlayer.innerHTML =
+                    `<iframe src="https://play.afreecatv.com/${parameter}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>`
             }
         }
     }
@@ -621,12 +624,19 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
                     </a>
                 </span>
                 {getStreamDropdown(eventDetails)}
+                <div className='streamDiv'>
+                    <span className='footer-notes'>Stream Enabled:</span>
+                    <StreamToggler />
+                </div>
                 <div className='chatDiv'>
                     <span className='footer-notes'>Chat Enabled:</span>
                     <ChatToggler />
                 </div>
-                <div id="video-player" className={chatEnabled ? `chatEnabled` : ``}></div>
-                {getVideoPlayer()}
+                {streamEnabled ?
+                    <div>
+                        <div id="video-player" className={chatEnabled ? `chatEnabled` : ``}></div>
+                        {getVideoPlayer()}
+                    </div> : null}
             </div>
             <LiveAPIWatcher gameIndex={gameIndex} gameMetadata={gameMetadata} lastWindowFrame={lastWindowFrame} championsUrlWithPatchVersion={championsUrlWithPatchVersion} blueTeam={eventDetails.match.teams[0]} redTeam={eventDetails.match.teams[1]} />
         </div>

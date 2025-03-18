@@ -21,6 +21,7 @@ import { EventDetails, DetailsFrame, GameMetadata, Item, Outcome, Record, Result
 import { ChatToggler } from '../Navbar/ChatToggler';
 import { TwitchEmbed, TwitchEmbedLayout } from 'twitch-player';
 import { GameDetails } from './GameDetails';
+import { StreamToggler } from '../Navbar/StreamToggler';
 
 
 export function Match({ match }: any) {
@@ -40,6 +41,8 @@ export function Match({ match }: any) {
     const [videoParameter, setVideoParameter] = useState<string>();
     const chatData = localStorage.getItem("chat");
     const chatEnabled = chatData ? chatData === `unmute` : false
+    const streamData = localStorage.getItem("stream");
+    const streamEnabled = streamData ? streamData === `unmute` : false
 
     const matchId = match.params.gameid;
     let matchEventDetails = eventDetails
@@ -472,8 +475,8 @@ export function Match({ match }: any) {
                 videoPlayer.innerHTML =
                     `<iframe width="100%" height="100%"  frameborder="0" scrolling="no" src="https://liveshare.huya.com/iframe/lpl"></iframe>`
             } else if (videoProvider === "afreecatv") {
-                videoPlayer.innerHTML = 
-                `<iframe src="https://play.afreecatv.com/${parameter}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>`
+                videoPlayer.innerHTML =
+                    `<iframe src="https://play.afreecatv.com/${parameter}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>`
             }
         }
     }
@@ -577,12 +580,19 @@ export function Match({ match }: any) {
                             </div>
                         ) : null}
                         {getStreamDropdown(eventDetails)}
+                        <div className='streamDiv'>
+                            <span className='footer-notes'>Stream Enabled:</span>
+                            <StreamToggler />
+                        </div>
                         <div className='chatDiv'>
                             <span className='footer-notes'>Chat Enabled:</span>
                             <ChatToggler />
                         </div>
-                        <div id="video-player" className={chatEnabled ? `chatEnabled` : ``}></div>
-                        {getVideoPlayer()}
+                        {streamEnabled ?
+                            <div>
+                                <div id="video-player" className={chatEnabled ? `chatEnabled` : ``}></div>
+                                {getVideoPlayer()}
+                            </div> : null}
                     </div>
                 </div>
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4163525631983528" crossOrigin="anonymous"></script>

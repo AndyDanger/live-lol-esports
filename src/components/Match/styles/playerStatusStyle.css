@@ -411,12 +411,12 @@ svg.player-champion {
     border-radius: 3px;
 }
 
-.chatDiv {
+.chatDiv, .streamDiv {
     display: inline-block;
     margin-right: 30px;
 }
 
-.chatDiv .toggle-container {
+.chatDiv .toggle-container, .streamDiv .toggle-container {
     display: inline-block;
     vertical-align: middle;
 }
@@ -431,7 +431,7 @@ svg.player-champion {
     cursor: pointer;
 }
 
-.chat-toggle {
+.chat-toggle, .stream-toggle {
     margin-left: 35%;
     cursor: pointer;
     height: 1.5rem;
