@@ -570,7 +570,7 @@ export function Match({ match }: any) {
                         {metadata ? (
                             <div>
                                 <span className="footer-notes">
-                                    <a target="_blank" href={`https://www.leagueoflegends.com/en-us/news/game-updates/patch-${metadata.patchVersion.split(`.`).slice(0, 2).join(`-`)}-notes/`}>Patch Version: {metadata.patchVersion}</a>
+                                    <a target="_blank" href={`https://www.leagueoflegends.com/en-us/news/game-updates/patch-25-${metadata.patchVersion.split(`.`)[1].length > 1 ? metadata.patchVersion.split(`.`)[1] : "0" + metadata.patchVersion.split(`.`)[1]}-notes/`}>Patch Version: {metadata.patchVersion}</a>
                                 </span>
                                 <span className="footer-notes">
                                     <a href="javascript:void(0);" className="copy-champion-names">

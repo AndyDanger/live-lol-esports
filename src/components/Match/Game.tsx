@@ -616,7 +616,7 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
                     </table>
                 </div>
                 <span className="footer-notes">
-                    <a target="_blank" href={`https://www.leagueoflegends.com/en-us/news/game-updates/patch-${gameMetadata.patchVersion.split(`.`).slice(0, 2).join(`-`)}-notes/`}>Patch Version: {gameMetadata.patchVersion}</a>
+                    <a target="_blank" href={`https://www.leagueoflegends.com/en-us/news/game-updates/patch-25-${gameMetadata.patchVersion.split(`.`)[1].length > 1 ? gameMetadata.patchVersion.split(`.`)[1] : "0" + gameMetadata.patchVersion.split(`.`)[1]}-notes/`}>Patch Version: {gameMetadata.patchVersion}</a>
                 </span>
                 <span className="footer-notes">
                     <a href="javascript:void(0);" className="copy-champion-names">
