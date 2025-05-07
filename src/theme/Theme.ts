@@ -9,6 +9,7 @@ export interface Theme {
     '--text-highlight': string,
     '--title': string,
     '--red': string,
+    '--purple': string,
     '--green': string,
     '--green-positive': string,
     '--blue': string,

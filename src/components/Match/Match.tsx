@@ -22,6 +22,7 @@ import { ChatToggler } from '../Navbar/ChatToggler';
 import { TwitchEmbed, TwitchEmbedLayout } from 'twitch-player';
 import { GameDetails } from './GameDetails';
 import { StreamToggler } from '../Navbar/StreamToggler';
+import { DisabledGame } from './DisabledGame';
 
 
 export function Match({ match }: any) {
@@ -482,15 +483,18 @@ export function Match({ match }: any) {
         }
     }
 
-    // console.log(`firstWindowFrame: ${firstWindowFrame}`)
-    // console.log(`lastWindowFrame: ${lastWindowFrame}`)
-    // console.log(`lastDetailsFrame: ${lastDetailsFrame}`)
-
     if (firstWindowFrame !== undefined && lastWindowFrame !== undefined && lastDetailsFrame !== undefined && metadata !== undefined && eventDetails !== undefined && currentGameOutcome !== undefined && scheduleEvent !== undefined && gameIndex !== undefined && items !== undefined && runes !== undefined) {
         return (
             <div className='match-container'>
                 <MatchDetails eventDetails={eventDetails} gameMetadata={metadata} matchState={formatMatchState(eventDetails, lastWindowFrame, scheduleEvent)} records={records} results={results} scheduleEvent={scheduleEvent} />
                 <Game eventDetails={eventDetails} gameIndex={gameIndex} gameMetadata={metadata} firstWindowFrame={firstWindowFrame} lastDetailsFrame={lastDetailsFrame} lastWindowFrame={lastWindowFrame} outcome={currentGameOutcome} records={records} results={results} items={items} runes={runes} />
+            </div>
+        );
+    } else if (firstWindowFrame !== undefined && metadata !== undefined && eventDetails !== undefined && scheduleEvent !== undefined && gameIndex !== undefined) {
+        return (
+            <div className='match-container'>
+                <MatchDetails eventDetails={eventDetails} gameMetadata={metadata} matchState={formatMatchState(eventDetails, firstWindowFrame, scheduleEvent)} records={records} results={results} scheduleEvent={scheduleEvent} />
+                <DisabledGame eventDetails={eventDetails} gameIndex={gameIndex} gameMetadata={metadata} firstWindowFrame={firstWindowFrame} records={records} />
             </div>
         );
     } else if (eventDetails !== undefined) {

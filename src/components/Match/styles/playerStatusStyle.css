@@ -188,7 +188,8 @@ span.mini-current-health {
 
 .gamestate-bg-in-game,
 .gamestate-bg-game-paused,
-.gamestate-bg-game-ended {
+.gamestate-bg-game-ended,
+.gamestate-bg-game-disabled {
     color: white;
     margin: 0px auto 10px auto;
     padding: 2.5px 10px;
@@ -198,6 +199,11 @@ span.mini-current-health {
 
 .gamestate-bg-game-paused {
     background-color: var(--gray-line);
+    animation: pulse-paused 7s infinite
+}
+
+.gamestate-bg-game-disabled {
+    background-color: var(--purple);
     animation: pulse-paused 7s infinite
 }
 
