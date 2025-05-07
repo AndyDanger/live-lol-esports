@@ -138,6 +138,7 @@ export function Match({ match }: any) {
                 console.log(frames[0])
                 console.groupEnd()
                 firstWindowReceived = true
+                setMetadata(response.data.gameMetadata)
                 setFirstWindowFrame(frames[0])
                 getItems(response.data.gameMetadata)
                 getRunes(response.data.gameMetadata)
@@ -480,6 +481,10 @@ export function Match({ match }: any) {
             }
         }
     }
+
+    // console.log(`firstWindowFrame: ${firstWindowFrame}`)
+    // console.log(`lastWindowFrame: ${lastWindowFrame}`)
+    // console.log(`lastDetailsFrame: ${lastDetailsFrame}`)
 
     if (firstWindowFrame !== undefined && lastWindowFrame !== undefined && lastDetailsFrame !== undefined && metadata !== undefined && eventDetails !== undefined && currentGameOutcome !== undefined && scheduleEvent !== undefined && gameIndex !== undefined && items !== undefined && runes !== undefined) {
         return (
