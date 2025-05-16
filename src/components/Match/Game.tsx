@@ -296,7 +296,7 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
             streamsOrVods = vods
         } else {
             if (!eventDetails.streams || !eventDetails.streams.length) {
-                if (eventDetails.match.games[gameIndex - 1].state === "completed") {
+                if (eventDetails.match.games[gameIndex - 1] && eventDetails.match.games[gameIndex - 1].state === "completed") {
                     return (<span>No VODS currently available</span>)
                 } else {
                     eventDetails.streams = []

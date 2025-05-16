@@ -399,7 +399,8 @@ export function Match({ match }: any) {
             streamsOrVods = vods
         } else {
             if (!eventDetails.streams || !eventDetails.streams.length) {
-                if (eventDetails.match.games[gameIndex ? gameIndex - 1 : 0].state === "completed") {
+                let streamGameIndex = gameIndex ? gameIndex - 1 : 0
+                if (eventDetails.match.games[streamGameIndex] && eventDetails.match.games[streamGameIndex].state === "completed") {
                     return (<span>No VODS currently available</span>)
                 } else {
                     eventDetails.streams = []
