@@ -150,8 +150,7 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
         navigator.clipboard.writeText(championNames.join("\t"));
     })
 
-    $(`#streamDropdown`).prop("onchange", null).off("change");
-    $(`#streamDropdown`).on(`change`, (e) => {
+    function handleStreamChange(e: any) {
         let optionSelected = $("option:selected", e.target);
 
         setVideoParameter(optionSelected.attr(`data-parameter`) || videoParameter)
@@ -161,7 +160,7 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
             videoPlayer.removeAttribute(`added`)
         }
 
-    })
+    }
 
     function capitalizeFirstLetter(string: string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -328,7 +327,7 @@ export function Game({ firstWindowFrame, lastWindowFrame, lastDetailsFrame, game
             getVideoPlayer(streamsOrVods[0].parameter)
         }
 
-        return (<select id="streamDropdown" className='footer-notes'>{dropdown}</select>)
+        return (<select id="streamDropdown" className='footer-notes' onChange={handleStreamChange}>{dropdown}</select>)
     }
 
     function getVideoPlayer(newParameter?: string) {

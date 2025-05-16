@@ -257,8 +257,7 @@ export function Match({ match }: any) {
         navigator.clipboard.writeText(championNames.join("\t"));
     })
 
-    $(`#streamDropdown`).prop("onchange", null).off("change");
-    $(`#streamDropdown`).on(`change`, (e) => {
+    function handleStreamChange(e: any) {
         let optionSelected = $("option:selected", e.target);
 
         setVideoParameter(optionSelected.attr(`data-parameter`) || videoParameter)
@@ -268,7 +267,7 @@ export function Match({ match }: any) {
             videoPlayer.removeAttribute(`added`)
         }
 
-    })
+    }
 
     const coStreamers: Array<ExtendedVod> = [
         {
@@ -440,7 +439,7 @@ export function Match({ match }: any) {
             getVideoPlayer(streamsOrVods[0].parameter)
         }
 
-        return (<select id="streamDropdown" className='footer-notes'>{dropdown}</select>)
+        return (<select id="streamDropdown" className='footer-notes' onChange={handleStreamChange}>{dropdown}</select>)
     }
 
     function getVideoPlayer(newParameter?: string) {
