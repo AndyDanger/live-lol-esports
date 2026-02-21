@@ -2,7 +2,7 @@ import './styles/playerStatusStyle.css'
 
 import {
     getEventDetailsResponse,
-    getISODateMultiplyOf10,
+    getISODate,
     getGameDetailsResponse,
     getWindowResponse,
     getScheduleResponse,
@@ -147,7 +147,7 @@ export function Match({ match }: any) {
         }
 
         function getLiveWindow(gameId: string) {
-            let date = getISODateMultiplyOf10();
+            let date = getISODate();
             getWindowResponse(gameId, date).then(response => {
                 if (response === undefined) return
                 let frames: WindowFrame[] = response.data.frames;
@@ -187,7 +187,7 @@ export function Match({ match }: any) {
         }
 
         function getLastDetailsFrame(gameId: string) {
-            let date = getISODateMultiplyOf10();
+            let date = getISODate();
             getGameDetailsResponse(gameId, date, lastFrameSuccess).then(response => {
                 lastFrameSuccess = false
                 if (response === undefined) return

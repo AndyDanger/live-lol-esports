@@ -1,5 +1,4 @@
 {
-  "homepage": "https://andydanger.github.io/live-lol-esports/",
   "name": "lol-live-eports-api",
   "version": "0.1.0",
   "private": true,
@@ -35,7 +34,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

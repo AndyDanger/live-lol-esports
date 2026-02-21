@@ -14,6 +14,12 @@ export function Navbar() {
                     <h2 className="navbar-icon">Live Esports</h2>
                 </Link>
             </div>
+            <div className="navbar-links">
+                <Link className="navbar-link" to="/">LoL</Link>
+                <Link className="navbar-link" to="/valorant">Valorant</Link>
+                <Link className="navbar-link" to="/cs2">CS2</Link>
+                <Link className="navbar-link" to="/nba">NBA</Link>
+            </div>
             <div className="settings-container">
                 <SoundToggler/>
                 <ThemeToggler/>

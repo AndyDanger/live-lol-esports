@@ -98,3 +98,20 @@ theme and sound toggle
 .muted > .notch {
     transform: translate(50%, -20%);
 }
+.navbar-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-basis: 100%;
+}
+
+.navbar-link {
+    color: var(--title);
+    text-decoration: none;
+    font: 500 1.25rem 'Inter', sans-serif;
+}
+
+.navbar-link:hover {
+    color: var(--logo-color);
+}

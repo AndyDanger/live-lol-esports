@@ -10,18 +10,6 @@ export function Footer() {
 
     return (
         <nav className="footer-container">
-            <a target="_blank" rel="noreferrer" href="https://github.com/AndyDanger/live-lol-esports">
-                <GitHubLogoSVG className="footer-img" />
-            </a>
-            <a target="_blank" rel="noreferrer" href="https://twitter.com/andydangerzone">
-                <TwitterSVG className="footer-img" />
-            </a>
-            <a target="_blank" rel="noreferrer" href="https://discord.com/users/183408194209579008">
-                <DiscordSVG className="footer-img" />
-            </a>
-            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/andrew-marshall-32b404110/">
-                <LinkedInSVG className="footer-img" />
-            </a>
         </nav>
     );
 }

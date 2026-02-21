@@ -108,6 +108,12 @@ export function getDataDragonResponse(JSON_URL: string, formattedPatchVersion: s
     return axios.get(JSON_URL.replace(`PATCH_VERSION`, formattedPatchVersion))
 }
 
+export function getISODate() {
+    const date = new Date();
+    date.setMilliseconds(0);
+    date.setSeconds(date.getSeconds() - secondDelay);
+    return date.toISOString();
+}
 
 export function getISODateMultiplyOf10() {
     const date = new Date();
