@@ -23,9 +23,9 @@ function App() {
                         <Route path="/live/:gameid" component={Match} />
                         <Redirect to="/" />
                     </Switch>
-                    <a className='thunderPickBanner' href="https://go.thunder.partners/visit/?bta=37411&nci=5627&campaign=WELCOME" target="_top">
+                    {/* <a className='thunderPickBanner' href="https://go.thunder.partners/visit/?bta=37411&nci=5627&campaign=WELCOME" target="_top">
                         <img src={ThunderPickBanner} width="100%" height="auto" loading="lazy" />
-                    </a>
+                    </a> */}
                 </div>
                 <Footer />
             </div>
