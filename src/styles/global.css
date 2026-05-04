@@ -88,10 +88,28 @@ a {
     right: 0;
 }
 
-#video-player:not([added]) > iframe {
+#video-player:not([added])>iframe {
     display: none;
 }
 
 #video-player[added].chatEnabled {
     min-height: 600px;
+}
+
+.desktopClutchBanner,
+.mobileClutchBanner {
+    max-width: 1080px;
+    margin: 0px auto;
+}
+
+@media(max-width: 770px) {
+    .desktopClutchBanner {
+        display: none;
+    }
+}
+
+@media(min-width: 770px) {
+    .mobileClutchBanner {
+        display: none;
+    }
 }
