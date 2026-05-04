@@ -3,13 +3,14 @@ import './styles/scheduleStyle.css'
 import { getScheduleResponse } from "../../utils/LoLEsportsAPI";
 import { EventCard } from "./EventCard";
 import { useEffect, useState } from "react";
-
+import { useFilters } from "../Sidebar/FilterContext";
 import { Schedule, ScheduleEvent } from "../types/baseTypes";
 
 export function EventsSchedule() {
     const [liveEvents, setLiveEvents] = useState<ScheduleEvent[]>([])
     const [last7DaysEvents, setlast7DaysEvents] = useState<ScheduleEvent[]>([])
     const [next7DaysEvents, setNext7DaysEvents] = useState<ScheduleEvent[]>([])
+    const { matchStatus, leagues, setAvailableLeagues } = useFilters();
 
     useEffect(() => {
         getScheduleResponse().then(response => {
@@ -17,39 +18,61 @@ export function EventsSchedule() {
             console.groupCollapsed(`Scheduled Matches: ${schedule.events.length}`)
             console.table(schedule.events)
             console.groupEnd()
+            const uniqueLeagues = Array.from(new Set(
+                schedule.events
+                    .filter((e) => e.league.slug !== "tft_esports")
+                    .map((e) => e.league.name)
+            )).sort();
+            setAvailableLeagues(uniqueLeagues);
+
             setLiveEvents(schedule.events.filter(filterLiveEvents))
             setlast7DaysEvents(schedule.events.filter(filterByLast7Days))
             setNext7DaysEvents(schedule.events.filter(filterByNext7Days))
         }).catch(error =>
             console.error(error)
         )
-    }, [])
+    }, [setAvailableLeagues]);
 
     document.title = "LoL Live Esports";
+
+    const filterByLeague = (events: ScheduleEvent[]) => {
+        if (leagues.size === 0) return events;
+        return events.filter((e) => leagues.has(e.league.name));
+    };
 
     let scheduledEvents = [
         {
             emptyMessage: 'No Live Matches',
-            scheduleEvents: liveEvents,
+            scheduleEvents: filterByLeague(liveEvents),
             title: 'Live Matches',
+            statusKey: "live" as const,
         },
         {
             emptyMessage: 'No Upcoming Matches',
-            scheduleEvents: next7DaysEvents,
+            scheduleEvents: filterByLeague(next7DaysEvents),
             title: 'Upcoming Matches',
+            statusKey: "upcoming" as const,
         },
         {
             emptyMessage: 'No Recent Matches',
-            scheduleEvents: last7DaysEvents,
+            scheduleEvents: filterByLeague(last7DaysEvents),
             title: 'Recent Matches',
+            statusKey: "recent" as const,
         }
-    ]
+    ].filter((section) => matchStatus.size === 0 || matchStatus.has(section.statusKey));
 
     return (
         <div className="orders-container">
-            {scheduledEvents.map(scheduledEvent => (
-                <EventCards key={scheduledEvent.title} emptyMessage={scheduledEvent.emptyMessage} scheduleEvents={scheduledEvent.scheduleEvents} title={scheduledEvent.title} />
-            ))}
+            {(
+                scheduledEvents.map((scheduledEvent) => (
+                    <EventCards
+                        key={scheduledEvent.title}
+                        emptyMessage={scheduledEvent.emptyMessage}
+                        scheduleEvents={scheduledEvent.scheduleEvents}
+                        title={scheduledEvent.title}
+                    />
+                ))
+            )}
         </div>
     );
 }
