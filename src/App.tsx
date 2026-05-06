@@ -10,7 +10,7 @@ import { useTheme } from './theme/ThemeContext'
 import React from "react";
 import ThunderPickBanner from './thunderpick_960x140.png';
 import ClutchBanner from './clutch_banner_2692x826.png';
-import MobileClutchBanner from './clutch_banner_1652x826.png';
+import MobileClutchBanner from './clutch_banner_mobile.png';
 
 function App() {
     const { theme } = useTheme();

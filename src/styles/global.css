@@ -66,7 +66,7 @@ a {
     min-height: 85vh;
     max-width: 1080px;
     margin: 0 auto;
-    padding: 2.5rem 2rem;
+    padding: 2.5rem 0rem;
     display: flex;
     flex-direction: column;
     position: relative;
