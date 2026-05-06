@@ -7,9 +7,18 @@
 
     background-color: var(--card-color);
     box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 1001;
 }
 
-.navbar-logo-container{
+.navbar-left {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.navbar-logo-container {
     display: flex;
     justify-content: center;
 }
@@ -21,7 +30,9 @@
     flex-direction: column;
 }
 
-.navbar-container::before, .navbar-logo-container, .toggle-container {
+.navbar-container::before,
+.navbar-logo-container,
+.toggle-container {
     content: '';
     flex-basis: 100%;
 }
@@ -30,7 +41,7 @@
     width: 2.5rem;
 }
 
-.navbar-icon-img > path {
+.navbar-icon-img>path {
     fill: var(--logo-color);
 }
 
@@ -74,6 +85,7 @@ theme and sound toggle
     .theme-toggle {
         margin-left: 0;
     }
+
     .sound-toggle {
         margin-left: 0;
     }
@@ -91,10 +103,10 @@ theme and sound toggle
     transition: all 0.5s;
 }
 
-.dark > .notch {
+.dark>.notch {
     transform: translate(50%, -20%);
 }
 
-.muted > .notch {
+.muted>.notch {
     transform: translate(50%, -20%);
 }
