@@ -66,7 +66,7 @@ a {
     min-height: 85vh;
     max-width: 1080px;
     margin: 0 auto;
-    padding: 2.5rem 2rem;
+    padding: 2.5rem 0rem;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -88,10 +88,28 @@ a {
     right: 0;
 }
 
-#video-player:not([added]) > iframe {
+#video-player:not([added])>iframe {
     display: none;
 }
 
 #video-player[added].chatEnabled {
     min-height: 600px;
+}
+
+.desktopClutchBanner,
+.mobileClutchBanner {
+    max-width: 1080px;
+    margin: 0px auto;
+}
+
+@media(max-width: 770px) {
+    .desktopClutchBanner {
+        display: none;
+    }
+}
+
+@media(min-width: 770px) {
+    .mobileClutchBanner {
+        display: none;
+    }
 }
