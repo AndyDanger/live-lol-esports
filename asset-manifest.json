@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/live-lol-esports/static/css/main.6af8be51.chunk.css",
-    "main.js": "/live-lol-esports/static/js/main.b99ffd99.chunk.js",
+    "main.css": "/live-lol-esports/static/css/main.1b34b2e5.chunk.css",
+    "main.js": "/live-lol-esports/static/js/main.cd6373a9.chunk.js",
     "runtime-main.js": "/live-lol-esports/static/js/runtime-main.7ccaa8eb.js",
     "static/css/2.2a53c7b1.chunk.css": "/live-lol-esports/static/css/2.2a53c7b1.chunk.css",
     "static/js/2.c02501db.chunk.js": "/live-lol-esports/static/js/2.c02501db.chunk.js",
@@ -15,6 +15,8 @@
     "static/media/blue_inhibitor_destroyed.ogg": "/live-lol-esports/static/media/blue_inhibitor_destroyed.1dca9d1a.ogg",
     "static/media/blue_turret_destroyed.ogg": "/live-lol-esports/static/media/blue_turret_destroyed.7f7dd295.ogg",
     "static/media/champion_slain.ogg": "/live-lol-esports/static/media/champion_slain.9c4732db.ogg",
+    "static/media/clutch_banner_2692x826.5e5806d1.png": "/live-lol-esports/static/media/clutch_banner_2692x826.5e5806d1.png",
+    "static/media/clutch_banner_mobile.2f696d22.png": "/live-lol-esports/static/media/clutch_banner_mobile.2f696d22.png",
     "static/media/discord.d1d464bd.svg": "/live-lol-esports/static/media/discord.d1d464bd.svg",
     "static/media/dragon-chemtech.515ce319.svg": "/live-lol-esports/static/media/dragon-chemtech.515ce319.svg",
     "static/media/dragon-cloud.1a55fc30.svg": "/live-lol-esports/static/media/dragon-cloud.1a55fc30.svg",
@@ -43,7 +45,7 @@
     "static/js/runtime-main.7ccaa8eb.js",
     "static/css/2.2a53c7b1.chunk.css",
     "static/js/2.c02501db.chunk.js",
-    "static/css/main.6af8be51.chunk.css",
-    "static/js/main.b99ffd99.chunk.js"
+    "static/css/main.1b34b2e5.chunk.css",
+    "static/js/main.cd6373a9.chunk.js"
   ]
 }
