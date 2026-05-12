@@ -96,20 +96,20 @@ a {
     min-height: 600px;
 }
 
-.desktopClutchBanner,
-.mobileClutchBanner {
+.desktopBanner,
+.mobileBanner {
     max-width: 1080px;
-    margin: 0px auto;
+    margin: 16px auto;
 }
 
 @media(max-width: 770px) {
-    .desktopClutchBanner {
+    .desktopBanner {
         display: none;
     }
 }
 
 @media(min-width: 770px) {
-    .mobileClutchBanner {
+    .mobileBanner {
         display: none;
     }
 }
