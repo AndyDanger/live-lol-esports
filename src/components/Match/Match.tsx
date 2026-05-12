@@ -332,6 +332,18 @@ export function Match({ match }: any) {
         },
         {
             coStreamer: true,
+            locale: `en-US`,
+            offset: 0,
+            parameter: `lplenglish`,
+            provider: `twitch`,
+            mediaLocale: {
+                englishName: `LPL - English`,
+                translatedName: `LPL - English`,
+                locale: `en-US`
+            }
+        },
+        {
+            coStreamer: true,
             locale: `en-CN`,
             offset: 0,
             parameter: `lpl`,
@@ -358,7 +370,7 @@ export function Match({ match }: any) {
             coStreamer: true,
             locale: `en-US`,
             offset: 0,
-            parameter: `nymaera_`,
+            parameter: `nymaera`,
             provider: `twitch`,
             mediaLocale: {
                 englishName: `Nymaera`,
