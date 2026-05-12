@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/live-lol-esports/static/css/main.1b34b2e5.chunk.css",
-    "main.js": "/live-lol-esports/static/js/main.cd6373a9.chunk.js",
+    "main.css": "/live-lol-esports/static/css/main.96e6d60d.chunk.css",
+    "main.js": "/live-lol-esports/static/js/main.85e4d0f6.chunk.js",
     "runtime-main.js": "/live-lol-esports/static/js/runtime-main.7ccaa8eb.js",
     "static/css/2.2a53c7b1.chunk.css": "/live-lol-esports/static/css/2.2a53c7b1.chunk.css",
     "static/js/2.c02501db.chunk.js": "/live-lol-esports/static/js/2.c02501db.chunk.js",
@@ -18,6 +18,8 @@
     "static/media/clutch_banner_2692x826.5e5806d1.png": "/live-lol-esports/static/media/clutch_banner_2692x826.5e5806d1.png",
     "static/media/clutch_banner_mobile.2f696d22.png": "/live-lol-esports/static/media/clutch_banner_mobile.2f696d22.png",
     "static/media/discord.d1d464bd.svg": "/live-lol-esports/static/media/discord.d1d464bd.svg",
+    "static/media/discord_banner_desktop.97925a2c.png": "/live-lol-esports/static/media/discord_banner_desktop.97925a2c.png",
+    "static/media/discord_banner_mobile.4dc0d869.png": "/live-lol-esports/static/media/discord_banner_mobile.4dc0d869.png",
     "static/media/dragon-chemtech.515ce319.svg": "/live-lol-esports/static/media/dragon-chemtech.515ce319.svg",
     "static/media/dragon-cloud.1a55fc30.svg": "/live-lol-esports/static/media/dragon-cloud.1a55fc30.svg",
     "static/media/dragon-elder.2dd99da4.svg": "/live-lol-esports/static/media/dragon-elder.2dd99da4.svg",
@@ -45,7 +47,7 @@
     "static/js/runtime-main.7ccaa8eb.js",
     "static/css/2.2a53c7b1.chunk.css",
     "static/js/2.c02501db.chunk.js",
-    "static/css/main.1b34b2e5.chunk.css",
-    "static/js/main.cd6373a9.chunk.js"
+    "static/css/main.96e6d60d.chunk.css",
+    "static/js/main.85e4d0f6.chunk.js"
   ]
 }
