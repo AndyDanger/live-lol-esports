@@ -95,21 +95,3 @@ a {
 #video-player[added].chatEnabled {
     min-height: 600px;
 }
-
-.desktopBanner,
-.mobileBanner {
-    max-width: 1080px;
-    margin: 16px auto;
-}
-
-@media(max-width: 770px) {
-    .desktopBanner {
-        display: none;
-    }
-}
-
-@media(min-width: 770px) {
-    .mobileBanner {
-        display: none;
-    }
-}
