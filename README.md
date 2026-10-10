@@ -22,3 +22,6 @@
 | [Visual Studio Code](https://code.visualstudio.com/)        | IDE |
 | [React](https://reactjs.org/) | FrameWork |
 | [Unofficial Lolesports API](https://github.com/vickz84259/lolesports-api-docs) | Requesting live data [vickz84259](https://github.com/vickz84259) |
+
+## Run this if you get a digital envelope error 
+`$env:NODE_OPTIONS="--openssl-legacy-provider"`
